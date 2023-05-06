@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.camera-view {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.camera-view img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.configuration {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+}
