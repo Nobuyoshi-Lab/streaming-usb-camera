@@ -1,6 +1,7 @@
 import os
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
+from tkinter import ttk
 
 # Create Tkinter root window
 root = tk.Tk()
@@ -28,12 +29,27 @@ for path in file_paths:
 # Set output file path to "output.txt" in the same directory as the script
 output_file_path = os.path.join(script_dir, "output.txt")
 
-# Clear output file contents
-with open(output_file_path, "w") as output_file:
-    pass
+# Check if output file already exists
+if os.path.exists(output_file_path):
+    # Create message box with "Replace" and "Append" buttons
+    answer = messagebox.askquestion("Output file exists", "The output file already exists. Do you want to replace its contents?", icon="question", type="yesnocancel", default="yes")
+    if answer == "no":
+        # If user chooses not to replace, open file in "append" mode
+        mode = "a"
+    elif answer == "yes":
+        # If user chooses to replace, open file in "write" mode and clear its contents
+        mode = "w"
+        with open(output_file_path, "w") as output_file:
+            pass
+    else:
+        # If user chooses to cancel, exit the program
+        exit()
+else:
+    # If output file doesn't exist, open it in "write" mode
+    mode = "w"
 
 # Write new content to file
-with open(output_file_path, "a") as output_file:
+with open(output_file_path, mode) as output_file:
     output_file.write(new_content)
 
 print("Files appended and saved to the output file.")
