@@ -2,7 +2,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+# utils outputs
 output.txt
+structure_diagram.txt
+
+# utils scripts
+list_files.py
+get_contents.py
 
 # C extensions
 *.so
