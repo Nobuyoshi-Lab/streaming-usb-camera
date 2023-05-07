@@ -1,9 +1,11 @@
-version: '3.8'
-
+version: "3.9"
 services:
   camera-web:
     build: .
+    image: camera_web_image
     ports:
       - "5000:5000"
+    environment:
+      - VIDEO_DEVICE=${VIDEO_DEVICE}
     devices:
       - "${VIDEO_DEVICE}:${VIDEO_DEVICE}"
