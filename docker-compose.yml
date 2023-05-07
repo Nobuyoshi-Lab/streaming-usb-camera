@@ -1,8 +1,18 @@
 version: "3.9"
 services:
-  camera-web:
-    build: .
-    image: camera_web_image
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: frontend:latest
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        - FRONTEND_IMAGE=frontend:latest
+    image: backend:latest
     ports:
       - "5000:5000"
     environment:
