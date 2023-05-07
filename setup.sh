@@ -7,9 +7,6 @@ sudo apt-get update
 # Install necessary dependencies
 sudo apt-get install -y v4l-utils python3 python3-pip
 
-# Install Python dependencies
-pip3 install -r backend/requirements.txt
-
 # Detect the camera device and write it to the .env file
 camera_device=$(v4l2-ctl --list-devices 2>/dev/null | grep -Eo "/dev/video[0-9]+" | head -1)
 if [ -z "$camera_device" ]; then

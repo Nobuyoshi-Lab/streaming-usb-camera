@@ -11,7 +11,12 @@ RUN npm run build
 FROM python:3.9
 WORKDIR /app
 COPY backend/requirements.txt .
+
+RUN apt-get update && \
+    apt-get install -y libgl1-mesa-glx && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN pip install -r requirements.txt
 COPY backend/ .
 COPY --from=frontend-build /frontend/build /app/frontend/build
-CMD ["python", "__init__.py"]
+CMD ["python", "app.py"]

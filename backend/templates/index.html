@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming</title>
+</head>
+<body>
+    <img src="{{ url_for('video_feed') }}" alt="Video Feed" style="width: 49%; float: left;">
+    <div style="width: 49%; float: right; padding: 10px;">
+        <form method="post">
+            <input type="checkbox" id="yoloToggle" onclick="toggleYolo()"> Toggle YOLO Object Detection<br><br>
+            <label for="interval">Time-lapse interval (seconds):</label>
+            <input type="number" id="interval" name="interval" min="{{ min_interval }}" step="1" value="{{ min_interval }}" onchange="updateInterval()">
+            <p id="intervalInfo">Current time-lapse interval: {{ min_interval }} seconds</p>
+        </form>
+    </div>
+    <script>
+        async function toggleYolo() {
+            const response = await fetch('/toggle_yolo', { method: 'POST' });
+            const result = await response.json();
+            console.log(result);
+        }
+
+        async function updateInterval() {
+            const intervalInput = document.getElementById('interval');
+            const intervalInfo = document.getElementById('intervalInfo');
+            const newInterval = parseInt(intervalInput.value);
+            const minInterval = parseInt(intervalInput.min);
+            if (newInterval >= minInterval) {
+                intervalInfo.innerText = `Current time-lapse interval: ${newInterval} seconds`;
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `interval=${newInterval}`,
+                });
+                const result = await response.text();
+                console.log(result);
+            }
+        }
+    </script>
+</body>
+</html>

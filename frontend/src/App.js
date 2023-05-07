@@ -4,10 +4,10 @@ import './App.css';
 function App() {
   const videoRef = useRef(null);
 
-  useEffect(() => {
+  const updateCameraFeed = () => {
     if (videoRef.current) {
       const img = new Image();
-      const src = "/camera_feed";
+      const src = '/camera_feed';
       img.src = src;
 
       img.onload = () => {
@@ -16,13 +16,17 @@ function App() {
         img.src = src;
       };
     }
-  }, [videoRef]);
+  };
+
+  useEffect(() => {
+    updateCameraFeed();
+  }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <canvas ref={videoRef} width="640" height="480" />
-      </header>
+      <div className="app-content">
+        <canvas className="camera-output" ref={videoRef} width="640" height="480" />
+      </div>
     </div>
   );
 }
