@@ -5,44 +5,24 @@ function App() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    const fetchCameraFeed = async () => {
-      const stream = await fetch('/camera_feed');
-      const reader = stream.body.getReader();
-      const videoElement = videoRef.current;
+    if (videoRef.current) {
+      const img = new Image();
+      const src = "/camera_feed";
+      img.src = src;
 
-      const processFrame = async () => {
-        const { value, done } = await reader.read();
-
-        if (done) {
-          return;
-        }
-
-        const blob = new Blob([value], { type: 'image/jpeg' });
-        const imageUrl = URL.createObjectURL(blob);
-        videoElement.src = imageUrl;
-
-        setTimeout(() => {
-          URL.revokeObjectURL(imageUrl);
-          processFrame();
-        }, 0);
+      img.onload = () => {
+        const ctx = videoRef.current.getContext('2d');
+        ctx.drawImage(img, 0, 0, videoRef.current.width, videoRef.current.height);
+        img.src = src;
       };
-
-      processFrame();
-    };
-
-    fetchCameraFeed();
-  }, []);
+    }
+  }, [videoRef]);
 
   return (
     <div className="App">
-      <div className="container">
-        <div className="camera-view">
-          <img ref={videoRef} alt="Camera feed" />
-        </div>
-        <div className="configuration">
-          {/* Add your login feature here */}
-        </div>
-      </div>
+      <header className="App-header">
+        <canvas ref={videoRef} width="640" height="480" />
+      </header>
     </div>
   );
 }

@@ -1,17 +1,9 @@
 version: "3.9"
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    image: frontend:latest
-
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
-      args:
-        - FRONTEND_IMAGE=frontend:latest
+      context: .
+      dockerfile: backend/Dockerfile
     image: backend:latest
     ports:
       - "5000:5000"

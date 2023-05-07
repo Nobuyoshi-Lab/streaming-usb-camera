@@ -22,9 +22,15 @@ def generate_camera_feed():
     cap = cv2.VideoCapture(int(video_device) if str(video_device).isdigit() else video_device)
     while True:
         ret, frame = cap.read()
-        ret, jpeg = cv2.imencode('.jpg', frame)
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n')
+        if ret:
+            ret, jpeg = cv2.imencode('.jpg', frame)
+            if ret:
+                yield (b'--frame\r\n'
+                       b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n')
+            else:
+                print("Failed to encode frame")
+        else:
+            print("Failed to read frame")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
