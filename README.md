@@ -1,5 +1,10 @@
 # Live Video Streaming with USB Camera and YOLOv8
 
+# Environment
+
+* Linux
+  * Ubuntu 22.04 LTS (Recommended)
+
 # Prerequisites
 
 Download and install the following software:
@@ -41,4 +46,10 @@ Run the following command to start the application:
 
 ```shell
 ./setup.sh
+```
+
+To stop the application, press `CTRL + C` and run the following command:
+
+```shell
+sudo docker compose down
 ```
