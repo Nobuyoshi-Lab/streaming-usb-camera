@@ -53,3 +53,7 @@ To stop the application, press `CTRL + C` and run the following command:
 ```shell
 sudo docker compose down
 ```
+
+# Credits
+
+This application is based on the [YOLOv8](https://github.com/ultralytics/ultralytics). All credit goes to the original authors. This repository is only a GUI to make it easier to use the model.
