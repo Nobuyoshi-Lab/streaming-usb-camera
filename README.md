@@ -56,4 +56,4 @@ sudo docker compose down
 
 # Credits
 
-This application is based on the [YOLOv8](https://github.com/ultralytics/ultralytics). All credit goes to the original authors.
+This application used [YOLOv8](https://github.com/ultralytics/ultralytics). All credit goes to the original authors.
