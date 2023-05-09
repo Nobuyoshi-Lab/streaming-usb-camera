@@ -56,4 +56,11 @@ sudo docker compose down
 
 # Credits
 
-This application used [YOLOv8](https://github.com/ultralytics/ultralytics). All credit goes to the original authors.
+This project uses the following resources:
+
+- [YOLOv8](https://github.com/ultralytics/ultralytics)
+- [Node.js](https://nodejs.org/)
+- [React App](https://create-react-app.dev/)
+- [Flask](https://flask.palletsprojects.com/)
+- [OpenCV](https://opencv.org/)
+- [Docker](https://www.docker.com/)
