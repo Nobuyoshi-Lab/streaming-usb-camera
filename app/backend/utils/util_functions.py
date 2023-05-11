@@ -1,8 +1,9 @@
 import os
 import time
 import cv2
-from .yolo_v8 import process_frame_with_yolo
+from .recognition import process_frame_with_yolo
 from .config import config
+
 
 def gen_frames():
     camera_index = os.environ.get("VIDEO_DEVICE", 0)

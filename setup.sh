@@ -21,8 +21,5 @@ fi
 export $(cat .env | xargs)
 
 # Build and run the Docker container
-echo "Building Docker image"
-sudo docker build -t camera-app -f app/backend/Dockerfile .
-
 echo "Running Docker container"
 sudo docker compose up --build

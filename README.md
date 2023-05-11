@@ -1,4 +1,4 @@
-# Live Video Streaming with USB Camera and YOLOv8
+# Live Video Streaming with USB Camera and Real-Time Object Detection and Facial Recognition
 
 # Environment
 
@@ -36,6 +36,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 # Usage
 
+## Setup
+
 Give permission to the setup script:
 
 ```shell
@@ -47,6 +49,16 @@ Run the following command to start the application:
 ```shell
 ./setup.sh
 ```
+
+## Start the Application 
+
+To start the application, run the following command:
+
+```shell
+sudo docker compose up --build
+```
+
+## Stop the Application
 
 To stop the application, press `CTRL + C` and run the following command:
 
@@ -64,3 +76,4 @@ This project uses the following resources:
 - [Flask](https://flask.palletsprojects.com/)
 - [OpenCV](https://opencv.org/)
 - [Docker](https://www.docker.com/)
+- [Deepface](https://github.com/serengil/deepface)
