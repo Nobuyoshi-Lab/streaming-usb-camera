@@ -77,3 +77,8 @@ This project uses the following resources:
 - [OpenCV](https://opencv.org/)
 - [Docker](https://www.docker.com/)
 - [Deepface](https://github.com/serengil/deepface)
+
+# TODO
+
+- [ ] When the browser refreshes, the `yolo_enabled` should be reset to `false`.
+- [ ] Make the web interface look appealing and add more features.
